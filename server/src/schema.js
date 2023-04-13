@@ -1,6 +1,18 @@
 const gql = require('graphql-tag');
 
 const typeDefs = gql`
+  type Mutation {
+    incrementTrackViews(id: ID!): IncrementTrackViewsResponse!
+  }
+  
+  type IncrementTrackViewsResponse {
+    code: Int!
+    success: Boolean!
+    message: String!
+    track: Track
+  }
+
+
   type Query {
     "Query to get tracks array for the homepage grid"
     tracksForHome: [Track!]!
@@ -52,6 +64,7 @@ const typeDefs = gql`
     "The module's video url, for video-based modules"
     videoUrl: String
   }
+  
 `;
 
 module.exports = typeDefs;
